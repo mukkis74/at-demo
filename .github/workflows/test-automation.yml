@@ -226,6 +226,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: all-results
+        continue-on-error: true
 
       - name: Merge test results
         run: |
