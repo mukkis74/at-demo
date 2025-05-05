@@ -58,6 +58,9 @@ jobs:
       - name: Run unit tests
         run: npm run test:unit
 
+      - name: Ensure allure-results directory exists
+        run: mkdir -p allure-results
+
       - name: Upload unit test results
         uses: actions/upload-artifact@v3
         if: always()
@@ -90,6 +93,9 @@ jobs:
       - name: Run API tests
         run: npm run test:api
 
+      - name: Ensure allure-results directory exists
+        run: mkdir -p allure-results
+
       - name: Upload API test results
         uses: actions/upload-artifact@v3
         if: always()
@@ -121,6 +127,9 @@ jobs:
 
       - name: Run smoke tests
         run: npm run test:smoke
+
+      - name: Ensure allure-results directory exists
+        run: mkdir -p allure-results
 
       - name: Upload smoke test results
         uses: actions/upload-artifact@v3
@@ -159,6 +168,9 @@ jobs:
 
       - name: Run E2E tests on ${{ matrix.browser }}
         run: npx playwright test --grep @e2e --project=${{ matrix.browser }}
+
+      - name: Ensure allure-results directory exists
+        run: mkdir -p allure-results
 
       - name: Upload E2E test results
         uses: actions/upload-artifact@v3
