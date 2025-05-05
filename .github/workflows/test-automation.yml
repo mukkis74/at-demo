@@ -61,6 +61,13 @@ jobs:
       - name: Ensure allure-results directory exists
         run: mkdir -p allure-results
 
+      - name: Verify allure-results directory
+        run: |
+          if [ ! -d "allure-results" ] || [ -z "$(ls -A allure-results)" ]; then
+            echo "No files to upload in allure-results directory."
+            exit 1
+          fi
+
       - name: Upload unit test results
         uses: actions/upload-artifact@v3
         if: always()
@@ -96,6 +103,13 @@ jobs:
       - name: Ensure allure-results directory exists
         run: mkdir -p allure-results
 
+      - name: Verify allure-results directory
+        run: |
+          if [ ! -d "allure-results" ] || [ -z "$(ls -A allure-results)" ]; then
+            echo "No files to upload in allure-results directory."
+            exit 1
+          fi
+
       - name: Upload API test results
         uses: actions/upload-artifact@v3
         if: always()
@@ -130,6 +144,13 @@ jobs:
 
       - name: Ensure allure-results directory exists
         run: mkdir -p allure-results
+
+      - name: Verify allure-results directory
+        run: |
+          if [ ! -d "allure-results" ] || [ -z "$(ls -A allure-results)" ]; then
+            echo "No files to upload in allure-results directory."
+            exit 1
+          fi
 
       - name: Upload smoke test results
         uses: actions/upload-artifact@v3
@@ -171,6 +192,13 @@ jobs:
 
       - name: Ensure allure-results directory exists
         run: mkdir -p allure-results
+
+      - name: Verify allure-results directory
+        run: |
+          if [ ! -d "allure-results" ] || [ -z "$(ls -A allure-results)" ]; then
+            echo "No files to upload in allure-results directory."
+            exit 1
+          fi
 
       - name: Upload E2E test results
         uses: actions/upload-artifact@v3
