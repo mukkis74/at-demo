@@ -1,0 +1,36 @@
+{
+  "name": "test-automation-framework",
+  "version": "1.0.0",
+  "description": "Complete test automation framework with Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:unit": "jest",
+    "test:api": "jest --testPathPattern=tests/api",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
+    "test:e2e": "npx playwright test --grep @e2e",
+    "test:performance": "k6 run tests/performance/performance.js",
+    "report": "npx allure generate ./allure-results --clean && npx allure open ./allure-report"
+  },
+  "keywords": [
+    "testing",
+    "automation",
+    "playwright",
+    "allure",
+    "k6"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.35.0",
+    "@types/jest": "^29.5.1",
+    "allure-commandline": "^2.22.1",
+    "allure-playwright": "^2.4.0",
+    "axios": "^1.4.0",
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
+}
