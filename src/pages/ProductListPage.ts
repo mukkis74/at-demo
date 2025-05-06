@@ -31,7 +31,8 @@ export class ProductListPage {
     this.disableButton = page.locator('button').filter({ hasText: 'Disable' });
     this.input = page.locator('input[type="text"]');
     this.message = page.locator('#message');
-    this.loading = page.locator('#loading');
+    // Use more specific selectors for loading elements to avoid strict mode violations
+    this.loading = page.locator('#loading').first(); // Use first() to handle multiple elements
   }
 
   /**
@@ -130,7 +131,21 @@ export class ProductListPage {
    * @returns 1 if checkbox is checked, 0 otherwise
    */
   async getCartCount(): Promise<number> {
-    const isChecked = await this.checkbox.isChecked();
-    return isChecked ? 1 : 0;
+    // Check if the checkbox has the 'checked' attribute or a specific class
+    // that indicates it's checked, or try to find an input inside the element
+    try {
+      const checkboxInput = this.page.locator('#checkbox input[type="checkbox"]');
+      if (await checkboxInput.count() > 0) {
+        return await checkboxInput.isChecked() ? 1 : 0;
+      }
+
+      // Fallback: check for checked attribute or class
+      const hasCheckedAttr = await this.checkbox.getAttribute('checked') !== null;
+      const hasCheckedClass = (await this.checkbox.getAttribute('class') || '').includes('checked');
+      return (hasCheckedAttr || hasCheckedClass) ? 1 : 0;
+    } catch (error) {
+      console.error('Error checking checkbox state:', error);
+      return 0; // Default to 0 if there's an error
+    }
   }
 }

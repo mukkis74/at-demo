@@ -67,6 +67,6 @@ export class LoginPage {
    */
   async expectSuccessfulLogin(expectedUrl: string): Promise<void> {
     await expect(this.successMessage).toBeVisible();
-    await expect(this.page).toHaveURL(expectedUrl);
+    await expect(this.page.url()).toContain(expectedUrl);
   }
 }

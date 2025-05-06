@@ -10,7 +10,8 @@
     "test:smoke": "npx playwright test --grep @smoke",
     "test:regression": "npx playwright test --grep @regression",
     "test:e2e": "npx playwright test --grep @e2e",
-    "test:performance": "k6 run tests/performance/performance.js",
+    "test:performance": "node scripts/check-k6.js && k6 run tests/performance/performance.js",
+    "install:k6": "node scripts/install-k6.js",
     "report": "npx allure generate ./allure-results --clean && npx allure open ./allure-report"
   },
   "keywords": [
