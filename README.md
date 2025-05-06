@@ -199,8 +199,9 @@ This framework includes GitHub Actions workflows for continuous integration. The
 1. Runs on pushes to main/master and on pull requests
 2. Installs dependencies and Playwright browsers
 3. Runs all test types in sequence
-4. Generates and publishes Allure reports
-5. Uploads test artifacts
+4. Uploads test artifacts using actions/upload-artifact@v3
+5. Downloads test artifacts using actions/download-artifact@v3
+6. Generates and publishes Allure reports
 
 ## Extending the Framework
 
