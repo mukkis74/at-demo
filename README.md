@@ -115,10 +115,17 @@ npm run test:performance
 #### Generating Reports
 
 ```bash
+# Generate and open Allure report
 npm run report
+
+# Clean all report directories
+npm run clean:reports
+
+# Run all tests and generate report
+npm run test:all
 ```
 
-This will generate an Allure report and open it in your default browser.
+This will generate an Allure report and open it in your default browser. The framework is configured to generate Allure reports for both Playwright and Jest tests, providing a unified view of all test results.
 
 ## Writing Tests
 
